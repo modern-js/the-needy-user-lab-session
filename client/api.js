@@ -5,50 +5,54 @@ if (typeof global === 'undefined') {
 
 /* write your code here */
 
+const getRequest = (route) => {
+  return global.fetch(`${route}`);
+};
 
-
+const getAll = () => {
+  const { food, drink, tv } = {
+    food: getRequest(`/food`),
+    drink: getRequest(`/drink`),
+    tv: getRequest(`/tv`)
+  };
+  return Promise.all([food, drink, tv]);
+}
 // define the api-client object to be exported
 const api = {};
 api.go = {};
 
-api.get = (something) => {
-  return global.fetch(`/${something}`);
+api.get = (route) => {
+  return getRequest(route);
 };
 
-api.get.me = (something) => {
-  return global.fetch(`/${something}`);
+api.get.me = (route) => {
+  return getRequest(route);
 };
 
-api.get.me.a = (something) => {
-  return global.fetch(`/${something}`);
+api.get.me.a = (route) => {
+  return getRequest(route);
 };
 
 
 api.get.me.everything = (something) => {
-  const {food, drink, tv} = {food: global.fetch(`/food`),
-                             drink: global.fetch(`/drink`),
-                             tv: global.fetch(`/tv`)};
-  return Promise.all([food, drink, tv]);
+  return getAll();
 };
 
 
-api.go.get = (something) => {
-  return global.fetch(`/${something}`);
+api.go.get = (route) => {
+  return getRequest(route);
 };
 
-api.go.get.me = (something) => {
-  return global.fetch(`/${something}`);
+api.go.get.me = (route) => {
+  return getRequest(route);
 };
 
-api.go.get.me.a = (something) => {
-  return global.fetch(`/${something}`);
+api.go.get.me.a = (route) => {
+  return getRequest(route);
 };
 
 api.go.get.me.everything = () => {
-  const {food, drink, tv} = {food: global.fetch(`/food`),
-                             drink: global.fetch(`/drink`),
-                             tv: global.fetch(`/tv`)};
-  return Promise.all([food, drink, tv]);
+  return getAll();
 };
 
 // making the code work both in the browser and node.js
