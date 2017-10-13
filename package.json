@@ -18,6 +18,7 @@
     "mocha": "^4.0.1"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "express-rate-limit": "^2.9.0"
   }
 }
