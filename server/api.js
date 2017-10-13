@@ -3,10 +3,10 @@ const api = require('express')();
 /* your code here */
 
 let totalRequests = 0;
+let rateLimit = 10
 
 api.get('/food', (req, res) => {
-
-  if(totalRequests >= 10){
+  if(totalRequests >= rateLimit){
     res.send({ error: 404 })
   } else {
     totalRequests++;
@@ -16,8 +16,7 @@ api.get('/food', (req, res) => {
 });
 
 api.get('/drink', (req, res) => {
-
-  if(totalRequests >= 10){
+  if(totalRequests >= rateLimit){
     res.send({ error: 404 })
   } else {
     totalRequests++;
@@ -26,8 +25,7 @@ api.get('/drink', (req, res) => {
 });
 
 api.get('/tv', (req, res) => {
-
-  if(totalRequests >= 10){
+  if(totalRequests >= rateLimit){
     res.send({ error: 404 })
   } else {
     totalRequests++;

@@ -13,9 +13,11 @@ get.me = something => {
 };
 
 get.me.everything = () => {
-  const {food, drink, tv} = {food: global.fetch(`/food`),
+  const {food, drink, tv} = {
+    food: global.fetch(`/food`),
     drink: global.fetch(`/drink`),
-    tv: global.fetch(`/tv`)};
+    tv: global.fetch(`/tv`)
+  };
   return Promise.all([food, drink, tv]);
 };
 
